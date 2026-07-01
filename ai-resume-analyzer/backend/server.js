@@ -9,9 +9,9 @@ const resumeRoutes = require('./routes/resume');
 const app = express();
 
 app.use(cors({
-  origin: [
-    'https://ai-resume-analyzer-5a3i.vercel.app'
-  ],
+  origin: function(origin, callback) {
+    callback(null, true);
+  },
   credentials: true
 }));
 
