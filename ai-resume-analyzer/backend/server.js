@@ -1,12 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-
-app.use(cors({
-  origin: [
-    'https://ai-resume-analyzer-5a3i.vercel.app'
-  ],
-  credentials: true
-}));;
 require('dotenv').config();
 
 const { initDB } = require('./config/db');
@@ -15,7 +8,13 @@ const resumeRoutes = require('./routes/resume');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://ai-resume-analyzer-5a3i.vercel.app'
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -29,6 +28,7 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 initDB();
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
