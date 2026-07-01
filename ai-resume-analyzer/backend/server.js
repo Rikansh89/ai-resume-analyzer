@@ -1,5 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+
+app.use(cors({
+  origin: [
+    'https://ai-resume-analyzer-5a3i.vercel.app'
+  ],
+  credentials: true
+}));;
 require('dotenv').config();
 
 const { initDB } = require('./config/db');
