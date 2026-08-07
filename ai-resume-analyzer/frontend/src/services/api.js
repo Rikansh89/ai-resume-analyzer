@@ -44,6 +44,12 @@ export const registerUser = (data) =>
 export const loginUser = (data) =>
   API.post('/api/auth/login', data);
 
+export const forgotPassword = (email) =>
+  API.post('/api/auth/forgot-password', { email });
+
+export const resetPassword = (data) =>
+  API.post('/api/auth/reset-password', data);
+
 export const getProfile = () =>
   API.get('/api/auth/profile');
 

@@ -98,6 +98,14 @@ const initDB = async () => {
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
   )`);
 
+  db.run(`CREATE TABLE IF NOT EXISTS password_resets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT NOT NULL,
+    code_hash TEXT NOT NULL,
+    expires_at INTEGER NOT NULL,
+    created_at TEXT DEFAULT (datetime('now'))
+  )`);
+
   const resumeColumns = (db.exec('PRAGMA table_info(resumes)')[0]?.values || []).map((c) => c[1]);
   const migrations = {
     keyword_score: 'keyword_score INTEGER DEFAULT NULL',

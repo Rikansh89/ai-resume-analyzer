@@ -55,6 +55,9 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             <Field label="email" type="email" name="email" value={form.email} onChange={handleChange} placeholder="you@email.com" required autoComplete="email" />
             <Field label="password" type="password" name="password" value={form.password} onChange={handleChange} placeholder="••••••••" required autoComplete="current-password" />
+            <div className="flex justify-end -mt-2">
+              <Link to="/forgot-password" className="text-xs text-accent font-medium hover:text-accent-dark transition-colors">forgot password?</Link>
+            </div>
             <Button type="submit" loading={loading} className="w-full">
               {loading ? 'signing in...' : 'sign in'}
             </Button>
