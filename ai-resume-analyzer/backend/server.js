@@ -11,12 +11,8 @@ const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
 
-const allowedOrigins = process.env.CLIENT_URL
-  ? process.env.CLIENT_URL.split(',').map((origin) => origin.trim())
-  : ['http://localhost:3000'];
-
 app.use(cors({
-  origin: allowedOrigins,
+  origin: true,
   credentials: true,
 }));
 app.use(express.json({ limit: '2mb' }));
